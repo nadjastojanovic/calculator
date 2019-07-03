@@ -16,6 +16,14 @@ body {
     height: 100px;
 }
 
+#displayText {
+    text-align: right;
+    font-size: 40px;
+    padding: 25px 25px 0 0;
+    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
+}
+
 button {
     transition: .3s;
 
@@ -44,17 +52,9 @@ button:hover {
     background-color:  rgb(199, 68, 44);
 }
 
-.equal {
+#equal {
     width: 300px !important;
     background-color: #CE9944 !important;
-}
-
-#displayText {
-    text-align: right;
-    font-size: 40px;
-    padding: 25px 25px 0 0;
-    overflow: hidden;
-    overflow: -moz-hidden-unscrollable;
 }
 
 .focus {
