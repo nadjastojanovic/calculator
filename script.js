@@ -7,7 +7,7 @@ let i = 0;
 let operator;
 
 
-buttons.addEventListener('click', function mainOne(e){
+buttons.addEventListener('click', e => {
     if(e.target.matches('button')){
         const key = e.target;
         const action = key.dataset.action;
