@@ -7,7 +7,7 @@ let i = 0;
 let operator;
 
 
-buttons.addEventListener('click', e => {
+buttons.addEventListener('click', function mainOne(e){
     if(e.target.matches('button')){
         const key = e.target;
         const action = key.dataset.action;
@@ -79,21 +79,11 @@ function calculate(a, o, b){
         }
         res = Math.floor(Number(a) / Number(b) * 10000000) / 10000000;
     }
-    return res
+    return res;
 }
 
 buttons.addEventListener("keydown", event => {
-    if(event.keyCode == 49){
-        eventFire(document.getElementById('one'), 'click');
+    if(event.isComposing || event.keyCode == 49){
+        document.getElementById('one').click();
     }
 });
-
-function eventFire(el, etype){
-    if (el.fireEvent) {
-      el.fireEvent('on' + etype);
-    } else {
-      var evObj = document.createEvent('Events');
-      evObj.initEvent(etype, true, false);
-      el.dispatchEvent(evObj);
-    }
-  }
