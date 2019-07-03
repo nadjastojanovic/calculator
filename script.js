@@ -2,6 +2,9 @@ const calculator = document.getElementById('calculator');
 const buttons = document.getElementById('keys');
 const display = document.getElementById('displayText');
 let decimalUse = 0;
+const operators = document.getElementsByClassName("operator");
+let i = 0;
+let operator;
 
 buttons.addEventListener('click', e => {
     if(e.target.matches('button')){
@@ -23,16 +26,36 @@ buttons.addEventListener('click', e => {
             display.textContent += '.';
             document.getElementById('decimal').setAttribute("disabled", "");
         }else if(action == "add" || action == "subtract" || action == "multiply" || action == "divide"){
+            i += 1;
             key.classList.add('focus');
-            calculator.dataset.firstNum = displayedNum;
-            calculator.dataset.operator = action;
-            calculator.dataset.previous = 'operator';
+            if(i > 1){
+                calculator.dataset.operator = action;
+                let secondNum = displayedNum;
+                let firstNum = calculator.dataset.firstNum;
+                
+                firstNum = calculate(firstNum, operator, secondNum);
+                calculator.dataset.firstNum = firstNum;
+                display.textContent = firstNum;
+                calculator.dataset.previous = 'operator';
+                console.log(operator);
+
+                
+                operator = calculator.dataset.operator;
+            }else{
+                calculator.dataset.firstNum = displayedNum;
+                calculator.dataset.operator = action;
+                calculator.dataset.previous = 'operator';
+                operator = calculator.dataset.operator;
+                console.log(calculator.dataset.operator);
+            }
+
             document.getElementById('decimal').removeAttribute("disabled", "");
             document.getElementsByClassName('equal').setAttribute("disabled", "");
+
         }else if(action == "calculate"){
-            const secondNum = displayedNum;
-            const operator = calculator.dataset.operator;
-            const firstNum = calculator.dataset.firstNum;
+            let secondNum = displayedNum;
+            let operator = calculator.dataset.operator;
+            let firstNum = calculator.dataset.firstNum;
 
             display.textContent = calculate(firstNum, operator, secondNum);
         }else if(action == "clear"){
