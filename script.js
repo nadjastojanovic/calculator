@@ -6,6 +6,7 @@ const operators = document.getElementsByClassName("operator");
 let i = 0;
 let operator;
 
+
 buttons.addEventListener('click', e => {
     if(e.target.matches('button')){
         const key = e.target;
@@ -39,7 +40,7 @@ buttons.addEventListener('click', e => {
                 calculator.dataset.previous = 'operator';
                 console.log(operator);
 
-                
+
                 operator = calculator.dataset.operator;
             }else{
                 calculator.dataset.firstNum = displayedNum;
@@ -80,3 +81,19 @@ function calculate(a, o, b){
     }
     return res
 }
+
+buttons.addEventListener("keydown", event => {
+    if(event.keyCode == 49){
+        eventFire(document.getElementById('one'), 'click');
+    }
+});
+
+function eventFire(el, etype){
+    if (el.fireEvent) {
+      el.fireEvent('on' + etype);
+    } else {
+      var evObj = document.createEvent('Events');
+      evObj.initEvent(etype, true, false);
+      el.dispatchEvent(evObj);
+    }
+  }
