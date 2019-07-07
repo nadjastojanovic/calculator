@@ -7,3 +7,4 @@ This was a JavaScript project for [The Odin Project](https://www.theodinproject.
 * Data Attributes
 * DOM
 * JavaScript Event Listeners
+* Switch statements
